@@ -40,8 +40,14 @@ public class Login extends AppCompatActivity {
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
     }
+public void loginHomeScreen(View v){
 
+        startActivity(new Intent(Login.this, HomeScreen.class));
+}
 
+public void createAccount (View v){
+    startActivity(new Intent(Login.this, Registration.class));
+}
 
 //    public void signInGoogle (View v){
 //        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
