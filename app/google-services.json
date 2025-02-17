@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "132368379068",
+    "firebase_url": "https://bean-upnorth-default-rtdb.firebaseio.com",
+    "project_id": "bean-upnorth",
+    "storage_bucket": "bean-upnorth.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132368379068:android:dc807785b30f2b84adb4b9",
+        "android_client_info": {
+          "package_name": "com.example.beanupnorth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132368379068-noujiuj8e30kjvfj04pcfvmjr8l2h0bj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsiyfOQEInMCi1pwcQXcdmdmoRsbWmOEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132368379068-noujiuj8e30kjvfj04pcfvmjr8l2h0bj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
