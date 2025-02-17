@@ -71,7 +71,7 @@ public class HomeScreen extends AppCompatActivity {
                 for(DataSnapshot snapShot : snapshot.getChildren()){
                     String name = snapShot.child("productName").getValue(String.class);
                     String type = snapShot.child("productType").getValue(String.class);
-                    Log.e("ProductList", "ProductName: " + name + ", ProductType: " +  type);
+                    Log.e("ProductLists", "ProductName: " + name + ", ProductType: " +  type);
                     Toast.makeText(HomeScreen.this, "" + name + type, Toast.LENGTH_SHORT).show();
                 }
             }

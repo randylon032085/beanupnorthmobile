@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -22,23 +23,26 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
     private GoogleSignInClient googleSignInClient;
-    Button googleLoginButton;
+    Button googleLoginButton, logButton;
     private FirebaseAuth mAuth;
     EditText editUser, editPassword;
+    TextView forgotPw, createAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-        googleLoginButton = findViewById(R.id.button4);
+//        googleLoginButton = findViewById(R.id.loginButton);
+
+        logButton = findViewById(R.id.loginButton2);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
         // Google Login
-        googleLoginButton.setOnClickListener(view -> signInWithGoogle());
+//        googleLoginButton.setOnClickListener(view -> signInWithGoogle());
 
         mAuth = FirebaseAuth.getInstance();
         editUser = findViewById(R.id.etUser);
@@ -49,6 +53,8 @@ public class Login extends AppCompatActivity {
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
     }
 public void loginHomeScreen(View v){
         String email = editUser.getText().toString().trim();
@@ -73,6 +79,10 @@ public void loginHomeScreen(View v){
 
 
 }
+
+    public void loginDashboard (View v){
+        startActivity(new Intent(Login.this, HomeScreen.class));
+    }
 
 public void createAccount (View v){
     startActivity(new Intent(Login.this, Registration.class));
