@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,38 +25,63 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeScreen extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private FoodAdapter foodAdapter;
+    private List<FoodItem> foodList;
+    /////////
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     TextView tviewProduct;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_screen);
-        tviewProduct = findViewById(R.id.tvProduct);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("products");
-//        fetchProductByType("beverages");
-         mDatabase.addValueEventListener(new ValueEventListener() {
-             @Override
-             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 StringBuilder productList = new StringBuilder();
-                 for(DataSnapshot productSnopshot : snapshot.getChildren()){
+    recyclerView = findViewById(R.id.recycleView);
 
-                     Products products= productSnopshot.getValue(Products.class);
-                     if(products!=null){
-                        productList.append("Product Name: ").append(products.getProductName()).append("Product Type: ").append(products.getProductType()).append("\n");
-                     }
-                 }
-                 tviewProduct.setText(productList.toString());
-             }
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-             @Override
-             public void onCancelled(@NonNull DatabaseError error) {
-                 Toast.makeText(HomeScreen.this, "Firebase Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
-             }
-         });
+    //Sample Data
+        foodList = new ArrayList<>();
+        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+
+        foodAdapter = new FoodAdapter(this, foodList);
+
+        recyclerView.setAdapter(foodAdapter);
+
+//        tviewProduct = findViewById(R.id.tvProduct);
+//
+//        mDatabase = FirebaseDatabase.getInstance().getReference("products");
+////        fetchProductByType("beverages");
+//         mDatabase.addValueEventListener(new ValueEventListener() {
+//             @Override
+//             public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                 StringBuilder productList = new StringBuilder();
+//                 for(DataSnapshot productSnopshot : snapshot.getChildren()){
+//
+//                     Products products= productSnopshot.getValue(Products.class);
+//                     if(products!=null){
+//                        productList.append("Product Name: ").append(products.getProductName()).append("Product Type: ").append(products.getProductType()).append("\n");
+//                     }
+//                 }
+//                 tviewProduct.setText(productList.toString());
+//             }
+//
+//             @Override
+//             public void onCancelled(@NonNull DatabaseError error) {
+//                 Toast.makeText(HomeScreen.this, "Firebase Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
+//             }
+//         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -100,11 +127,11 @@ public class HomeScreen extends AppCompatActivity {
         });
     }
 
-    public void logout(View v){
-
-        Intent intent = new Intent(HomeScreen.this, Login.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
+//    public void logout(View v){
+//
+//        Intent intent = new Intent(HomeScreen.this, Login.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+//        finish();
+//    }
 }
