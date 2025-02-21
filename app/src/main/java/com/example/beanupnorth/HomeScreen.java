@@ -54,6 +54,18 @@ public class HomeScreen extends AppCompatActivity {
         foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
         foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
         foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
 
         foodAdapter = new FoodAdapter(this, foodList);
 

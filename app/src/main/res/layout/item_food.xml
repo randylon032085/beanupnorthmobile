@@ -2,7 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/rounded_background"
+    >
 
 
     <ImageView
@@ -25,7 +29,7 @@
         android:text="Title"
         app:layout_constraintStart_toEndOf="@+id/foodImage"
         app:layout_constraintTop_toTopOf="@id/foodImage"
-        app:layout_constraintEnd_toStartOf="@id/addToCartButton"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
     <TextView
@@ -37,16 +41,78 @@
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toEndOf="@id/foodImage"
         app:layout_constraintTop_toBottomOf="@id/foodName"
-        app:layout_constraintEnd_toStartOf="@id/addToCartButton"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-        android:id="@+id/addToCartButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!--heart-->
+    <ImageView
+        android:id="@+id/ivHeart"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/heart"
+        app:tint="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Button" />\
+        app:layout_constraintBottom_toBottomOf="@id/foodName"
+        />
+    <!--quantity selector layout-->
+    <LinearLayout
+        android:id="@+id/quantitySelector"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_button"
+        android:padding="4dp"
+        app:layout_constraintStart_toStartOf="@id/foodDescription"
+        app:layout_constraintTop_toBottomOf="@id/foodDescription"
+
+        >
+    <!--Minus Button-->
+        <ImageButton
+            android:id="@+id/btnMinus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/minus"
+            android:scaleType="centerInside"
+
+            />
+
+        <!--Quantity Text-->
+        <EditText
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:text="13"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            />
+        <!--Add button-->
+        <ImageButton
+            android:id="@+id/btnAdd"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/add"
+            android:scaleType="centerInside"
+
+            />
+        <!--Add to cart button-->
+        <Button
+            android:id="@+id/addToCartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+
+            android:backgroundTint="@null"
+            android:paddingHorizontal="16dp"
+            android:text="Add to Cart"
+            app:layout_constraintBottom_toBottomOf="@id/quantitySelector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/quantitySelector"
+            app:layout_constraintTop_toTopOf="@id/quantitySelector"
+
+            />
+    </LinearLayout>
+    
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
