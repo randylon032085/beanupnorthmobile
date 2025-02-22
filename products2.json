@@ -1,0 +1,18 @@
+{
+  "products": {
+    "product1": {
+      "prod_description": "Comes from the deepest part of Mars.",
+      "prod_name": "Milk",
+      "prod_price": 21,
+      "prod_type": "beverages",
+      "image_url": "https://cdn-icons-png.flaticon.com/128/869/869460.png"
+    },
+    "product2": {
+      "prod_description": "Freshly brewed coffee",
+      "prod_name": "Coffee",
+      "prod_price": 50,
+      "prod_type": "beverages",
+      "image_url": "https://cdn-icons-png.flaticon.com/128/3354/3354187.png"
+    }
+  }
+}

@@ -27,7 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class HomeScreen extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FoodAdapter foodAdapter;
@@ -36,7 +35,7 @@ public class HomeScreen extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     TextView tviewProduct;
-
+    DatabaseReference dbRef;
 
 
     @Override
@@ -51,21 +50,49 @@ public class HomeScreen extends AppCompatActivity {
 
     //Sample Data
         foodList = new ArrayList<>();
-        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
-        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
-        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
-        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
-        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+        dbRef = FirebaseDatabase.getInstance().getReference("products");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //clear first the items of Arraylist before fetchinh new data
+                foodList.clear();
+
+                //fetch data from firebase
+                for(DataSnapshot items: snapshot.getChildren()){
+                    if(!items.hasChild("prod_price")){
+                        Log.e("Firebase","Missing prod_price field for "+items.getKey());
+                        continue;
+                    }
+
+                    String name = items.child("prod_name" ).getValue(String.class);
+                    String description = items.child("prod_description").getValue(String.class);
+                    foodList.add(new FoodItem(R.drawable.padlock, name,description));
+                }
+                foodAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
+//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
+//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
+//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
 
         foodAdapter = new FoodAdapter(this, foodList);
 
