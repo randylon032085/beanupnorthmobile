@@ -1,14 +1,17 @@
 package com.example.beanupnorth;
 
 public class FoodItem {
-    private int imageResId;
-    private String name;
+    private int imageResId, price;
+    private String name, type, imgUrl ;
     private String description;
 
-    public FoodItem(int imageResId, String name, String description ){
+    public FoodItem(int imageResId, String name, String description, String type, int price, String imgUrl ){
         this.imageResId = imageResId;
         this.name = name;
         this.description = description;
+        this.price = price;
+        this.type = type;
+        this.imgUrl= imgUrl;
     }
 
     public int getImageResId(){
@@ -22,4 +25,17 @@ public class FoodItem {
     public String getDescription(){
     return description;
     }
+
+    public int getPrice(){
+        return price;
+    }
+
+    public String getType(){
+        return type;
+    }
+
+    public String getImgUrl(){
+        return imgUrl;
+    }
+
 }

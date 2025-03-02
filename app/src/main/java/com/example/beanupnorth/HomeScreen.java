@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,11 +32,15 @@ public class HomeScreen extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FoodAdapter foodAdapter;
     private List<FoodItem> foodList;
+
+
     /////////
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     TextView tviewProduct;
     DatabaseReference dbRef;
+
+    SearchView searchView;
 
 
     @Override
@@ -48,6 +53,7 @@ public class HomeScreen extends AppCompatActivity {
 
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+    searchView = findViewById(R.id.searchView);
     //Sample Data
         foodList = new ArrayList<>();
         dbRef = FirebaseDatabase.getInstance().getReference("products");
@@ -65,9 +71,32 @@ public class HomeScreen extends AppCompatActivity {
                     }
 
                     String name = items.child("prod_name" ).getValue(String.class);
-                    String description = items.child("prod_description").getValue(String.class);
-                    foodList.add(new FoodItem(R.drawable.padlock, name,description));
+                    String description = items.child("prod_desc").getValue(String.class);
+                    String type = items.child("prod_type").getValue(String.class);
+                    Long longprice = items.child("prod_price").getValue(Long.class);
+                    int price = (longprice!=null)?longprice.intValue():0;
+                    String imgUrl = items.child("image_url").getValue(String.class);
+                    foodList.add(new FoodItem(R.drawable.padlock, name,description, type, price, imgUrl));
                 }
+                foodAdapter = new FoodAdapter(HomeScreen.this, foodList);
+                Log.d("FOODLIST",foodList.size()+"");
+                recyclerView.setAdapter(foodAdapter);
+                    Log.d("FOOFLIST ONDATA CHANGE",foodList.size()+"");
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        foodAdapter.getFilter().filter(query);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        foodAdapter.getFilter().filter(newText);
+                        return false;
+
+                    }
+
+                });
                 foodAdapter.notifyDataSetChanged();
             }
 
@@ -94,9 +123,9 @@ public class HomeScreen extends AppCompatActivity {
 //        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
 //        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
 
-        foodAdapter = new FoodAdapter(this, foodList);
 
-        recyclerView.setAdapter(foodAdapter);
+
+
 
 //        tviewProduct = findViewById(R.id.tvProduct);
 //
@@ -164,6 +193,26 @@ public class HomeScreen extends AppCompatActivity {
                 Toast.makeText(HomeScreen.this, "welcome", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void cofeeButton(View v){
+            String query = "coffee";
+            searchView.setQuery(query,true);
+    }
+
+    public void cakeButton(View v){
+        String query = "cake";
+        searchView.setQuery(query,true);
+    }
+
+    public void breadsButton(View V){
+        String query = "bread";
+        searchView.setQuery(query,true);
+    }
+
+    public void packagesButton(View v){
+        String query = "package";
+        searchView.setQuery(query,true);
     }
 
 //    public void logout(View v){

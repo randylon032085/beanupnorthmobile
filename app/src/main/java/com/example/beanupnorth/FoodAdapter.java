@@ -1,10 +1,12 @@
 package com.example.beanupnorth;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,16 +14,29 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
 
     private Context context;
     private List<FoodItem> FoodList;
+    private List<FoodItem> FoodListFull;
 
     public FoodAdapter(Context context, List<FoodItem> FoodList){
         this.context = context;
         this.FoodList = FoodList;
+        this.FoodListFull = new ArrayList<>();
+
+        if(FoodList!=null){
+        this.FoodListFull.addAll(FoodList);
+        }
+
+
 
     }
 
@@ -38,9 +53,18 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     public void onBindViewHolder(@NonNull FoodAdapter.FoodViewHolder holder, int position) {
 
         FoodItem food = FoodList.get(position);
-        holder.foodImage.setImageResource(food.getImageResId());
+        Log.d("ImageURL", "Loading Image: " + food.getImgUrl());
+//        holder.foodImage.setImageResource(food.getImageResId());
+//        glide needs to add first dependencies in gradles
+        Glide.with(holder.itemView.getContext())
+                .load(food.getImgUrl())
+                .apply(new RequestOptions()
+                        .centerCrop())
+                .into(holder.foodImage);
         holder.foodDescription.setText(food.getDescription());
         holder.foodName.setText(food.getName());
+        holder.price.setText("$"+food.getPrice()+".00");
+        holder.type.setText(food.getType());
         holder.addtoCartButton.setOnClickListener(v->{
 
         });
@@ -55,8 +79,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     public static class FoodViewHolder extends RecyclerView.ViewHolder{
 
         ImageView foodImage;
-        TextView foodName, foodDescription;
+        TextView foodName, foodDescription, price, type;
         Button addtoCartButton;
+
 
         public FoodViewHolder(@NonNull View itemView)
         {
@@ -65,10 +90,59 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             foodName = itemView.findViewById(R.id.foodName);
             foodDescription = itemView.findViewById(R.id.foodDescription);
             addtoCartButton = itemView.findViewById(R.id.addToCartButton);
+            price = itemView.findViewById((R.id.tvPrice));
+            type = itemView.findViewById(R.id.tvType);
 
 
         }
     }
+
+//A function that will call the foodFilter
+
+
+    public Filter getFilter(){
+        return foodFilter;
+    }
+
+
+    //this is the function for filtering fooditem
+    private final Filter foodFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<FoodItem> filteredList = new ArrayList<>();
+            Log.d("FOOD ADAPTER", "filtering with query: "+constraint);
+            Log.d("FOOD ADAPTER", "foodlistFull size: "+FoodListFull.size());
+            if(constraint==null || constraint.length()==0){
+                filteredList.addAll(FoodListFull);
+            }else{
+                String filterPattern = constraint.toString().toLowerCase().trim(); //we make sure that the input has no white spaces and the keys are in lowered.
+
+               for(FoodItem item: FoodListFull){
+                if(item.getName().toLowerCase().contains(filterPattern)){
+                            //cofee has cof
+                    //pass the result of filter to filtered items
+                    filteredList.add(item);
+                }
+
+               }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            results.count = filteredList.size();
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+                FoodList.clear();
+                if(results.values!=null){
+                    FoodList.addAll((List<FoodItem>)results.values);
+                }
+
+                notifyDataSetChanged();
+        }
+    };
 
 
 }

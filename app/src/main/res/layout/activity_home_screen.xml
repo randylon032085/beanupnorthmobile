@@ -9,6 +9,12 @@
 
 
     <!--Header-->
+
+
+    <!--Search Bar-->
+
+    <!--Filter buttons-->
+
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -17,10 +23,10 @@
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
@@ -45,22 +51,17 @@
             android:src="@drawable/padlock" />
     </LinearLayout>
 
-
-    <!--Search Bar-->
-
-    <!--Filter buttons-->
-
-    <EditText
-        android:id="@+id/eTSearchBar"
+    <SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_border"
-        android:hint="Search Burger,Beverage,etc..."
-        android:padding="12dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/filterButton"
-        tools:layout_editor_absoluteX="80dp" />
+        android:background="@color/white"
+        android:queryHint="Search product...."
 
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
     <LinearLayout
         android:id="@+id/filterButton"
         android:layout_width="match_parent"
@@ -76,6 +77,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange"
             android:text="Coffee"
+            android:onClick="cofeeButton"
             android:textColor="@android:color/white" />
 
         <Button
@@ -84,6 +86,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/orange"
             android:text="Cake"
+            android:onClick="cakeButton"
             android:textColor="@android:color/white" />
 
         <Button
@@ -92,6 +95,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/orange"
             android:text="Breads"
+            android:onClick="breadsButton"
             android:textColor="@android:color/white" />
 
         <Button
@@ -100,6 +104,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/orange"
             android:text="Package"
+            android:onClick="packagesButton"
             android:textColor="@android:color/white" />
     </LinearLayout>
 

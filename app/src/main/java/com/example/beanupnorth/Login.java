@@ -59,23 +59,23 @@ public class Login extends AppCompatActivity {
 public void loginHomeScreen(View v){
         String email = editUser.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
-
-        if(TextUtils.isEmpty(email)|| TextUtils.isEmpty(password)){
-            Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this,task -> {
-            if(task.isSuccessful()){
-                FirebaseUser user = mAuth.getCurrentUser();
-                if(user!=null){
-                    Toast.makeText(this, "Login Successful ", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Login.this, HomeScreen.class));
-                }else{
-                    Toast.makeText(this, "Login Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+    startActivity(new Intent(Login.this, HomeScreen.class));
+//        if(TextUtils.isEmpty(email)|| TextUtils.isEmpty(password)){
+//            Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this,task -> {
+//            if(task.isSuccessful()){
+//                FirebaseUser user = mAuth.getCurrentUser();
+//                if(user!=null){
+//                    Toast.makeText(this, "Login Successful ", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(Login.this, HomeScreen.class));
+//                }else{
+//                    Toast.makeText(this, "Login Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
 
 }

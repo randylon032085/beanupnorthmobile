@@ -1,5 +1,5 @@
 {
-  "products": {
+
     "product1": {
       "prod_desc": "Comes from the deepest part of Mars.",
       "prod_name": "Milk",
@@ -154,5 +154,5 @@
       "prod_type": "fruits",
       "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909763.png"
     }
-  }
+
 }
