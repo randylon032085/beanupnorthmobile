@@ -39,6 +39,7 @@ public class HomeScreen extends AppCompatActivity {
     private DatabaseReference mDatabase;
     TextView tviewProduct;
     DatabaseReference dbRef;
+    List<CartItem> cartItems = new ArrayList<>();
 
     SearchView searchView;
 
@@ -76,8 +77,9 @@ public class HomeScreen extends AppCompatActivity {
                     Long longprice = items.child("prod_price").getValue(Long.class);
                     int price = (longprice!=null)?longprice.intValue():0;
                     String imgUrl = items.child("image_url").getValue(String.class);
-                    foodList.add(new FoodItem(R.drawable.padlock, name,description, type, price, imgUrl));
+                    foodList.add(new FoodItem( name,description, type, price, imgUrl));
                 }
+
                 foodAdapter = new FoodAdapter(HomeScreen.this, foodList);
                 Log.d("FOODLIST",foodList.size()+"");
                 recyclerView.setAdapter(foodAdapter);
@@ -213,6 +215,13 @@ public class HomeScreen extends AppCompatActivity {
     public void packagesButton(View v){
         String query = "package";
         searchView.setQuery(query,true);
+    }
+
+    public void openCart(View v){
+        Intent intent = new Intent(HomeScreen.this, Cart.class);
+
+//        intent.putExtra("cartItems", cartItems);
+        startActivity(intent);
     }
 
 //    public void logout(View v){

@@ -161,7 +161,7 @@
         <ImageButton
             android:id="@+id/btnCart"
             android:layout_width="56dp"
-
+            android:onClick="openCart"
             android:layout_height="56dp"
             android:background="@android:color/transparent"
             android:src="@drawable/cart"
