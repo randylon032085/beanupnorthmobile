@@ -28,18 +28,18 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddtoCartListener {
     private RecyclerView recyclerView;
     private FoodAdapter foodAdapter;
     private List<FoodItem> foodList;
-
+    TextView cBadge;
 
     /////////
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     TextView tviewProduct;
     DatabaseReference dbRef;
-    List<CartItem> cartItems = new ArrayList<>();
+    ArrayList<CartItem> cartItems = new ArrayList<>();
 
     SearchView searchView;
 
@@ -50,6 +50,9 @@ public class HomeScreen extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_screen);
 
+        cBadge = findViewById(R.id.cartBadge);
+
+        cBadge.setText(cartItems.size()+"");
     recyclerView = findViewById(R.id.recycleView);
 
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -80,7 +83,7 @@ public class HomeScreen extends AppCompatActivity {
                     foodList.add(new FoodItem( name,description, type, price, imgUrl));
                 }
 
-                foodAdapter = new FoodAdapter(HomeScreen.this, foodList);
+                foodAdapter = new FoodAdapter(HomeScreen.this, foodList,  HomeScreen.this);
                 Log.d("FOODLIST",foodList.size()+"");
                 recyclerView.setAdapter(foodAdapter);
                     Log.d("FOOFLIST ONDATA CHANGE",foodList.size()+"");
@@ -220,8 +223,23 @@ public class HomeScreen extends AppCompatActivity {
     public void openCart(View v){
         Intent intent = new Intent(HomeScreen.this, Cart.class);
 
-//        intent.putExtra("cartItems", cartItems);
+        intent.putExtra("cartItems", cartItems);
         startActivity(intent);
+    }
+
+    @Override
+    public void onAddtoCart(FoodItem foodItem) {
+        //Checking items if existed already
+        for(CartItem item : cartItems){
+            if(item.getName().equals(foodItem.getName())){
+                Toast.makeText(this, foodItem.getName()+" is already in the cart", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
+
+        cartItems.add(new CartItem(foodItem.getName(), foodItem.getPrice(), foodItem.getQuantity()));
+        cBadge.setText(cartItems.size()+"");
     }
 
 //    public void logout(View v){
@@ -231,4 +249,7 @@ public class HomeScreen extends AppCompatActivity {
 //        startActivity(intent);
 //        finish();
 //    }
+
+
+
 }

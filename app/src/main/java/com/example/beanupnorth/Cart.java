@@ -30,7 +30,7 @@ public class Cart extends AppCompatActivity {
         rvCart.setLayoutManager(new LinearLayoutManager(this));
         cartItem = new ArrayList<>();
 
-//        cartItem = (ArrayList<CartItem>)getIntent().getSerializableExtra("cartItems");
+        cartItem = (ArrayList<CartItem>)getIntent().getSerializableExtra("cartItems");
 
         cartAdapter = new CartAdapter(cartItem);
 

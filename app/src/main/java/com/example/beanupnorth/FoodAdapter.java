@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Filter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
@@ -26,12 +29,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     private Context context;
     private List<FoodItem> FoodList;
     private List<FoodItem> FoodListFull;
+    private onAddtoCartListener addtoCartListener;
 
-    public FoodAdapter(Context context, List<FoodItem> FoodList){
+    public FoodAdapter(Context context, List<FoodItem> FoodList, onAddtoCartListener listener){
         this.context = context;
         this.FoodList = FoodList;
         this.FoodListFull = new ArrayList<>();
-
+        this.addtoCartListener = listener;
         if(FoodList!=null){
         this.FoodListFull.addAll(FoodList);
         }
@@ -67,7 +71,40 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         holder.type.setText(food.getType());
         holder.addtoCartButton.setOnClickListener(v->{
 
+
+            if(addtoCartListener!=null){
+                if(food.getQuantity()==0){
+                    Toast.makeText(context, "Please add quantity", Toast.LENGTH_SHORT).show();
+                }else{
+                    addtoCartListener.onAddtoCart(food);
+                }
+
+            }
+
         });
+        holder.edtQuantity.setText(food.getQuantity()+"");
+
+        holder.butAdd.setOnClickListener( v -> {
+
+                food.setQuantity(food.getQuantity()+1);
+                holder.edtQuantity.setText(food.getQuantity()+"");
+
+        });
+        holder.butMinus.setOnClickListener(v -> {
+
+            if(food.getQuantity()>0){
+                food.setQuantity(food.getQuantity()-1);
+                holder.edtQuantity.setText(food.getQuantity()+"");
+            }
+
+
+        });
+
+
+    }
+        //User defined interface class for onAddtToCart Listener
+    public interface onAddtoCartListener{
+        void onAddtoCart(FoodItem foodItem);
     }
 
     @Override
@@ -81,6 +118,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         ImageView foodImage;
         TextView foodName, foodDescription, price, type;
         Button addtoCartButton;
+        ImageButton butAdd, butMinus;
+        EditText edtQuantity;
 
 
         public FoodViewHolder(@NonNull View itemView)
@@ -92,6 +131,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             addtoCartButton = itemView.findViewById(R.id.addToCartButton);
             price = itemView.findViewById((R.id.tvPrice));
             type = itemView.findViewById(R.id.tvType);
+            butAdd = itemView.findViewById(R.id.btnAdd);
+            butMinus = itemView.findViewById(R.id.btnMinus);
+            edtQuantity = itemView.findViewById(R.id.etQuantity);
 
 
         }

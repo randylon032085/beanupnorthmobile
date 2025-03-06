@@ -110,17 +110,19 @@
 
         >
         <!--Minus Button-->
+
+        <!--Quantity Text-->
         <ImageButton
             android:id="@+id/btnMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/minus"
             android:scaleType="centerInside"
+            android:src="@drawable/minus"
 
             />
 
-        <!--Quantity Text-->
         <EditText
+            android:id="@+id/etQuantity"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
