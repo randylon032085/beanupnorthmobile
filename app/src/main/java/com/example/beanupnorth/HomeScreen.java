@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -43,6 +45,39 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
 
     SearchView searchView;
 
+    private final ActivityResultLauncher<Intent> cartLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result ->{
+        if(result.getResultCode()==RESULT_OK && result.getData()!=null){
+            ArrayList<CartItem> removedItems = result.getData().getParcelableArrayListExtra("removedItems");
+
+            if(removedItems!=null && !removedItems.isEmpty()){
+
+                for(CartItem removedItem : removedItems){
+                    updateFoodItemQuantity(removedItem);
+                }
+            }
+
+        }
+    });
+
+    private void updateFoodItemQuantity(CartItem removedItem){
+        //Remove the item from the foodlist(for UI update).
+        for(FoodItem foodItem : foodList){
+            if(foodItem.getName().equals(removedItem.getName())){
+                foodItem.setQuantity(0);
+                break;
+            }
+        }
+        //Remove the item from CartItem based on removedItem for tracking
+        for(int x = 0; x < cartItems.size(); x++){
+            if(cartItems.get(x).getName().equals(removedItem.getName())){
+                cartItems.remove(x);
+                break;
+            }
+        }
+        //Update the badge after remove
+        cBadge.setText(String.valueOf(cartItems.size()));
+        foodAdapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,50 +146,6 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
             }
         });
 
-
-//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
-//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
-//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
-//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
-//        foodList.add(new FoodItem(R.drawable.beans, "Beaf cheese burger", "with melted cheddar cheese" ));
-//        foodList.add(new FoodItem(R.drawable.beanlogo, "Beaf logo", "with melted logo cheese" ));
-//        foodList.add(new FoodItem(R.drawable.padlock, "padlock", "with melted cheddar padlock" ));
-
-
-
-
-
-//        tviewProduct = findViewById(R.id.tvProduct);
-//
-//        mDatabase = FirebaseDatabase.getInstance().getReference("products");
-////        fetchProductByType("beverages");
-//         mDatabase.addValueEventListener(new ValueEventListener() {
-//             @Override
-//             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                 StringBuilder productList = new StringBuilder();
-//                 for(DataSnapshot productSnopshot : snapshot.getChildren()){
-//
-//                     Products products= productSnopshot.getValue(Products.class);
-//                     if(products!=null){
-//                        productList.append("Product Name: ").append(products.getProductName()).append("Product Type: ").append(products.getProductType()).append("\n");
-//                     }
-//                 }
-//                 tviewProduct.setText(productList.toString());
-//             }
-//
-//             @Override
-//             public void onCancelled(@NonNull DatabaseError error) {
-//                 Toast.makeText(HomeScreen.this, "Firebase Error" + error.getMessage(), Toast.LENGTH_SHORT).show();
-//             }
-//         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -162,43 +153,7 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
         });
     }
 
-    //Function for Fetching Product by Type
-    private void fetchProductByType(String productType){
-        Query query = mDatabase.orderByChild("productType").equalTo(productType);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snapShot : snapshot.getChildren()){
-                    String name = snapShot.child("productName").getValue(String.class);
-                    String type = snapShot.child("productType").getValue(String.class);
-                    Log.e("ProductLists", "ProductName: " + name + ", ProductType: " +  type);
-                    Toast.makeText(HomeScreen.this, "" + name + type, Toast.LENGTH_SHORT).show();
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(HomeScreen.this, "Firebase error"+ error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void loadUserData(String userId){
-        mDatabase.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String name = snapshot.child("name").getValue(String.class);
-                    Toast.makeText(HomeScreen.this, "Welcome" + name, Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(HomeScreen.this, "welcome", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     public void cofeeButton(View v){
             String query = "coffee";
@@ -224,7 +179,7 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
         Intent intent = new Intent(HomeScreen.this, Cart.class);
 
         intent.putExtra("cartItems", cartItems);
-        startActivity(intent);
+        cartLauncher.launch(intent);
     }
 
     @Override
@@ -232,13 +187,15 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
         //Checking items if existed already
         for(CartItem item : cartItems){
             if(item.getName().equals(foodItem.getName())){
-                Toast.makeText(this, foodItem.getName()+" is already in the cart", Toast.LENGTH_SHORT).show();
+                item.setQuantity(foodItem.getQuantity());
+                Toast.makeText(this, foodItem.getName()+" is added into you cart", Toast.LENGTH_SHORT).show();
+
                 return;
             }
         }
 
 
-        cartItems.add(new CartItem(foodItem.getName(), foodItem.getPrice(), foodItem.getQuantity()));
+        cartItems.add(new CartItem(foodItem.getName(), foodItem.getPrice(), foodItem.getQuantity(), foodItem.getImgUrl()));
         cBadge.setText(cartItems.size()+"");
     }
 

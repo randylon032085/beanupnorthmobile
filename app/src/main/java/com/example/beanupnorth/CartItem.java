@@ -9,15 +9,16 @@ import java.security.PrivateKey;
 
 public class CartItem implements Parcelable {
 
-    private String name;
+    private String name, imgURl;
     private double price;
     private int quantity;
 
 
-    public CartItem (String name, double price, int quantity){
+    public CartItem (String name, double price, int quantity, String imgURl){
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.imgURl = imgURl;
     }
 
     public String getName(){
@@ -32,11 +33,18 @@ public class CartItem implements Parcelable {
         return quantity;
     }
 
+    public String getImgURl() {return imgURl;}
+
+    public void setQuantity(int newQuantity){
+        this.quantity = newQuantity;
+    }
+
 
     protected CartItem(Parcel in) {
         name = in.readString();
         price = in.readDouble();
         quantity = in.readInt();
+        imgURl = in.readString();
     }
 
     public static final Creator<CartItem> CREATOR = new Creator<CartItem>() {
@@ -61,6 +69,7 @@ public class CartItem implements Parcelable {
         dest.writeString(name);
         dest.writeDouble(price);
         dest.writeInt(quantity);
+        dest.writeString(imgURl);
 
 
     }
