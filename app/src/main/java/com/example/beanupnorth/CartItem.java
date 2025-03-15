@@ -35,6 +35,10 @@ public class CartItem implements Parcelable {
 
     public String getImgURl() {return imgURl;}
 
+    public double getTotalPrice(){
+        return price * quantity;
+    }
+
     public void setQuantity(int newQuantity){
         this.quantity = newQuantity;
     }

@@ -60,4 +60,12 @@ public class Cart extends AppCompatActivity implements CartAdapter.OnCartItemRem
             removedCartItem.add(removedItem);
         }
     }
+
+
+    public void CHECKOUT(View v){
+        Intent intent = new Intent(Cart.this, CheckOut.class);
+        intent.putExtra("cartItems", (ArrayList)cartItem);
+        startActivity(intent);
+
+    }
 }

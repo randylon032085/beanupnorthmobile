@@ -1,158 +1,162 @@
 {
+"products": {
+  "product1": {
+    "prod_desc": "Comes from the deepest part of Mars.",
+    "prod_name": "Milk",
+    "prod_price": 21,
+    "prod_type": "beverages",
+    "image_url": "https://drive.google.com/uc?export=view&id=1Ff5m7gXjmWoGTQOe40Lrd9qn_rzObiAl"
 
-    "product1": {
-      "prod_desc": "Comes from the deepest part of Mars.",
-      "prod_name": "Milk",
-      "prod_price": 21,
-      "prod_type": "beverages",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/869/869460.png"
-    },
-    "product2": {
-      "prod_desc": "Freshly brewed coffee",
-      "prod_name": "Coffee",
-      "prod_price": 50,
-      "prod_type": "beverages",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/3354/3354187.png"
-    },
-    "product3": {
-      "prod_desc": "Refreshing and natural orange juice.",
-      "prod_name": "Orange Juice",
-      "prod_price": 30,
-      "prod_type": "beverages",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/135/135695.png"
-    },
-    "product4": {
-      "prod_desc": "Classic green tea with a soothing aroma.",
-      "prod_name": "Green Tea",
-      "prod_price": 40,
-      "prod_type": "beverages",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/2738/2738730.png"
-    },
-    "product5": {
-      "prod_desc": "Pure mineral water.",
-      "prod_name": "Water Bottle",
-      "prod_price": 15,
-      "prod_type": "beverages",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/939/939916.png"
-    },
-    "product6": {
-      "prod_desc": "Crispy potato chips with sea salt flavor.",
-      "prod_name": "Potato Chips",
-      "prod_price": 35,
-      "prod_type": "snacks",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/6974/6974192.png"
-    },
-    "product7": {
-      "prod_desc": "Delicious dark chocolate bar.",
-      "prod_name": "Chocolate",
-      "prod_price": 45,
-      "prod_type": "snacks",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/1089/1089124.png"
-    },
-    "product8": {
-      "prod_desc": "Crunchy peanut butter cookies.",
-      "prod_name": "Cookies",
-      "prod_price": 25,
-      "prod_type": "snacks",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/415/415733.png"
-    },
-    "product9": {
-      "prod_desc": "Healthy and tasty granola bar.",
-      "prod_name": "Granola Bar",
-      "prod_price": 30,
-      "prod_type": "snacks",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/135/135696.png"
-    },
-    "product10": {
-      "prod_desc": "Sweet and crunchy caramel popcorn.",
-      "prod_name": "Popcorn",
-      "prod_price": 20,
-      "prod_type": "snacks",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/2821/2821769.png"
-    },
-    "product11": {
-      "prod_desc": "Organic honey straight from the hive.",
-      "prod_name": "Honey",
-      "prod_price": 60,
-      "prod_type": "groceries",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909766.png"
-    },
-    "product12": {
-      "prod_desc": "Delicious and fresh apples.",
-      "prod_name": "Apple",
-      "prod_price": 15,
-      "prod_type": "fruits",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/415/415714.png"
-    },
-    "product13": {
-      "prod_desc": "Sweet and juicy bananas.",
-      "prod_name": "Banana",
-      "prod_price": 10,
-      "prod_type": "fruits",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/135/135622.png"
-    },
-    "product14": {
-      "prod_desc": "Fresh and nutritious spinach leaves.",
-      "prod_name": "Spinach",
-      "prod_price": 20,
-      "prod_type": "vegetables",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/1727/1727282.png"
-    },
-    "product15": {
-      "prod_desc": "Whole wheat bread, soft and healthy.",
-      "prod_name": "Bread",
-      "prod_price": 35,
-      "prod_type": "bakery",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909764.png"
-    },
-    "product16": {
-      "prod_desc": "Classic butter croissant.",
-      "prod_name": "Croissant",
-      "prod_price": 25,
-      "prod_type": "bakery",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909772.png"
-    },
-    "product17": {
-      "prod_desc": "Premium cheddar cheese.",
-      "prod_name": "Cheese",
-      "prod_price": 55,
-      "prod_type": "dairy",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/1524/1524985.png"
-    },
-    "product18": {
-      "prod_desc": "Farm fresh eggs.",
-      "prod_name": "Eggs",
-      "prod_price": 40,
-      "prod_type": "dairy",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/1411/1411715.png"
-    },
-    "product19": {
-      "prod_desc": "Fresh cow’s milk yogurt.",
-      "prod_name": "Yogurt",
-      "prod_price": 50,
-      "prod_type": "dairy",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/4100/4100933.png"
-    },
-    "product20": {
-      "prod_desc": "Sweet and fruity strawberry jam.",
-      "prod_name": "Strawberry Jam",
-      "prod_price": 35,
-      "prod_type": "groceries",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909758.png"
-    },
-    "product21": {
-      "prod_desc": "Crunchy and salty pretzels.",
-      "prod_name": "Pretzels",
-      "prod_price": 28,
-      "prod_type": "snacks",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/135/135644.png"
-    },
-    "product22": {
-      "prod_desc": "Fresh and juicy watermelon slices.",
-      "prod_name": "Watermelon",
-      "prod_price": 18,
-      "prod_type": "fruits",
-      "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909763.png"
-    }
+  },
+  "product2": {
+    "prod_desc": "Freshly brewed coffee",
+    "prod_name": "Coffee",
+    "prod_price": 50,
+    "prod_type": "beverages",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/3354/3354187.png"
+  },
+  "product3": {
+    "prod_desc": "Refreshing and natural orange juice.",
+    "prod_name": "Orange Juice",
+    "prod_price": 30,
+    "prod_type": "beverages",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/135/135695.png"
+  },
+  "product4": {
+    "prod_desc": "Classic green tea with a soothing aroma.",
+    "prod_name": "Green Tea",
+    "prod_price": 40,
+    "prod_type": "beverages",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/2738/2738730.png"
+  },
+  "product5": {
+    "prod_desc": "Pure mineral water.",
+    "prod_name": "Water Bottle",
+    "prod_price": 15,
+    "prod_type": "beverages",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/939/939916.png"
+  },
+  "product6": {
+    "prod_desc": "Crispy potato chips with sea salt flavor.",
+    "prod_name": "Potato Chips",
+    "prod_price": 35,
+    "prod_type": "snacks",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/6974/6974192.png"
+  },
+  "product7": {
+    "prod_desc": "Delicious dark chocolate bar.",
+    "prod_name": "Chocolate",
+    "prod_price": 45,
+    "prod_type": "snacks",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/1089/1089124.png"
+  },
+  "product8": {
+    "prod_desc": "Crunchy peanut butter cookies.",
+    "prod_name": "Cookies",
+    "prod_price": 25,
+    "prod_type": "snacks",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/415/415733.png"
+  },
+  "product9": {
+    "prod_desc": "Healthy and tasty granola bar.",
+    "prod_name": "Granola Bar",
+    "prod_price": 30,
+    "prod_type": "snacks",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/135/135696.png"
+  },
+  "product10": {
+    "prod_desc": "Sweet and crunchy caramel popcorn.",
+    "prod_name": "Popcorn",
+    "prod_price": 20,
+    "prod_type": "snacks",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/2821/2821769.png"
+  },
+  "product11": {
+    "prod_desc": "Organic honey straight from the hive.",
+    "prod_name": "Honey",
+    "prod_price": 60,
+    "prod_type": "groceries",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909766.png"
+  },
+  "product12": {
+    "prod_desc": "Delicious and fresh apples.",
+    "prod_name": "Apple",
+    "prod_price": 15,
+    "prod_type": "fruits",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/415/415714.png"
+  },
+  "product13": {
+    "prod_desc": "Sweet and juicy bananas.",
+    "prod_name": "Banana",
+    "prod_price": 10,
+    "prod_type": "fruits",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/135/135622.png"
+  },
+  "product14": {
+    "prod_desc": "Fresh and nutritious spinach leaves.",
+    "prod_name": "Spinach",
+    "prod_price": 20,
+    "prod_type": "vegetables",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/1727/1727282.png"
+  },
+  "product15": {
+    "prod_desc": "Whole wheat bread, soft and healthy.",
+    "prod_name": "Bread",
+    "prod_price": 35,
+    "prod_type": "bakery",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909764.png"
+  },
+  "product16": {
+    "prod_desc": "Classic butter croissant.",
+    "prod_name": "Croissant",
+    "prod_price": 25,
+    "prod_type": "bakery",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909772.png"
+  },
+  "product17": {
+    "prod_desc": "Premium cheddar cheese.",
+    "prod_name": "Cheese",
+    "prod_price": 55,
+    "prod_type": "dairy",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/1524/1524985.png"
+  },
+  "product18": {
+    "prod_desc": "Farm fresh eggs.",
+    "prod_name": "Eggs",
+    "prod_price": 40,
+    "prod_type": "dairy",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/1411/1411715.png"
+  },
+  "product19": {
+    "prod_desc": "Fresh cow’s milk yogurt.",
+    "prod_name": "Yogurt",
+    "prod_price": 50,
+    "prod_type": "dairy",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/4100/4100933.png"
+  },
+  "product20": {
+    "prod_desc": "Sweet and fruity strawberry jam.",
+    "prod_name": "Strawberry Jam",
+    "prod_price": 35,
+    "prod_type": "groceries",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909758.png"
+  },
+  "product21": {
+    "prod_desc": "Crunchy and salty pretzels.",
+    "prod_name": "Pretzels",
+    "prod_price": 28,
+    "prod_type": "snacks",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/135/135644.png"
+  },
+  "product22": {
+    "prod_desc": "Fresh and juicy watermelon slices.",
+    "prod_name": "Watermelon",
+    "prod_price": 18,
+    "prod_type": "fruits",
+    "image_url": "https://cdn-icons-png.flaticon.com/128/2909/2909763.png"
+  }
+
+
+}
 
 }
