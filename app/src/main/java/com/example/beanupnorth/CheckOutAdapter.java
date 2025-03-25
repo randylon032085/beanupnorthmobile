@@ -63,4 +63,5 @@ public class CheckOutAdapter extends RecyclerView.Adapter<CheckOutAdapter.CheckO
         }
     }
 
+
 }

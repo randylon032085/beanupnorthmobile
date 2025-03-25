@@ -15,6 +15,9 @@
         android:theme="@style/Theme.BeanUpNorth"
         tools:targetApi="31">
         <activity
+            android:name=".PlaceOrder"
+            android:exported="false" />
+        <activity
             android:name=".CheckOut"
             android:exported="false" />
         <activity
