@@ -199,6 +199,10 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
         cBadge.setText(cartItems.size()+"");
     }
 
+    public void ONCLICKMYORDERS(View v){
+        startActivity(new Intent(HomeScreen.this, MyOrder.class));
+    }
+
 //    public void logout(View v){
 //
 //        Intent intent = new Intent(HomeScreen.this, Login.class);
