@@ -47,6 +47,9 @@ public class Login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         editUser = findViewById(R.id.etUser);
         editPassword = findViewById(R.id.etPassword);
+
+        editUser.setText("bean2@gmail.com");
+        editPassword.setText("12345678");
         // Google Sign-In Config
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))

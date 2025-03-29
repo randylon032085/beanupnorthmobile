@@ -64,14 +64,20 @@ public class MyOrder extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("FirebaseOrder", "FetchingOrders");
-                List<OrderItem> orderItems = new ArrayList<>();
+                List<ORDERS> orders = new ArrayList<>();
                 //retrieving first leve data
                 for(DataSnapshot firstLevel : snapshot.getChildren()){
                   //getting customer id from second level
                     String customerId = firstLevel.child("customerId").getValue(String.class);
+                    String orderId = firstLevel.child("orderId").getValue(String.class);
+                    Double total = firstLevel.child("total").getValue(Double.class);
+                    String date = firstLevel.child("date").getValue(String.class);
+                    String status = firstLevel.child("status").getValue(String.class);
 
+                    Log.d("Firstlevel",""+customerId+orderId+total+date+status);
                     //checking customerid if matched with the user email.
                     if(customerId!=null && customerId.equals(userEmail)){
+                        List<OrderItem> orderItems = new ArrayList<>();
                        //assuming there is an item is node that contains order items
                        for(DataSnapshot itemSnapShot : firstLevel.child("item").getChildren()){
                              OrderItem item = itemSnapShot.getValue(OrderItem.class);
@@ -81,17 +87,28 @@ public class MyOrder extends AppCompatActivity {
                                  Log.d("FirebaseOrder", "added: "+ orderItems.get(0));
                              }
                        }
+
+                        ORDERS Orders = new ORDERS();
+                        Orders.setStatus(status);
+                        Orders.setOrderId(orderId);
+                        Orders.setTotal(total);
+                        Orders.setDate(date);
+                        Orders.setItem(orderItems);
+
+                        //adding orders to order
+                        orders.add(Orders);
                     }
+
                 }
 
                 //Checking if order item is empty
-                if(orderItems.isEmpty()){
+                if(orders.isEmpty()){
                     Log.d("FirebaseOrder","No order found for this user");
                 }
 
                 //Ensure recycleview update the main thread.
                 runOnUiThread(()->{
-                    orderItemAdapter = new OrderItemAdapter(orderItems,MyOrder.this);
+                    orderItemAdapter = new OrderItemAdapter(orders,MyOrder.this);
                     rvOrder.setAdapter(orderItemAdapter);
                 });
 
