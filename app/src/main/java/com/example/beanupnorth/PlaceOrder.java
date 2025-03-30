@@ -1,7 +1,10 @@
 package com.example.beanupnorth;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -21,7 +24,8 @@ public class PlaceOrder extends AppCompatActivity {
 
     ImageView imQrCode;
     Bitmap qrBitMap;
-
+    Boolean flag=false;
+    Button buttonBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +35,21 @@ public class PlaceOrder extends AppCompatActivity {
         imQrCode = findViewById(R.id.iVQrCode);
         QRCodeWriter writer = new QRCodeWriter();
         try{
-            String orderId = getIntent().getExtras().getString("orderId");
+            String orderId="";
+            Bundle extras =getIntent().getExtras();
+            if(extras.containsKey("myorder"))
+            {
+                buttonBack = findViewById(R.id.btnBackToHomescreen);
+                buttonBack.setText("Back to My Order");
+                orderId = getIntent().getExtras().get("myorder").toString();
+                flag=true;
+            }else{
+
+                orderId = getIntent().getExtras().get("orderId").toString();
+            }
+
+
+
             BitMatrix bitMatrix = writer.encode(orderId, BarcodeFormat.QR_CODE,200,200);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             qrBitMap = barcodeEncoder.createBitmap((bitMatrix));
@@ -45,5 +63,14 @@ public class PlaceOrder extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+    public void  ONCLICKBACKHOMESCREEN (View v){
+        if(flag==true)
+        {
+            finish();
+        }else{
+            startActivity(new Intent(PlaceOrder.this, HomeScreen.class));
+        }
+
     }
 }
