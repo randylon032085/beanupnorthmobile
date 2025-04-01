@@ -1,5 +1,6 @@
 package com.example.beanupnorth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +45,10 @@ public class MyOrder extends AppCompatActivity {
             return insets;
         });
     }
+
+
+
+
     public void FetchOrder (){
         Log.d("Firebase Orders","Fetch ordered called");
         //getting current user
@@ -119,7 +125,11 @@ public class MyOrder extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("FirebaseError", "Failed to read data", error.toException());
             }
+
         });
 
+
+
     }
+
 }
