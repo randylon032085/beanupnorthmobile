@@ -90,6 +90,6 @@ public class Registration extends AppCompatActivity {
 
     public void returnLogin(View v){
         registerUser();
-//        startActivity(new Intent(Registration.this, Login.class));
+        startActivity(new Intent(Registration.this, Login.class));
     }
 }

@@ -91,14 +91,14 @@ public void createAccount (View v){
     startActivity(new Intent(Login.this, Registration.class));
 }
 
-//    public void signInGoogle (View v){
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
-//                .requestEmail()
-//                .build();
-//        googleSignInClient = GoogleSignIn.getClient(this, gso);
-//        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
-//    }
+    public void signInGoogle (View v){
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+    }
 private void signInWithGoogle() {
     Intent signInIntent = googleSignInClient.getSignInIntent();
     startActivityForResult(signInIntent, 100);

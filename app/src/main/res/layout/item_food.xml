@@ -3,48 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="140dp"
     android:layout_marginBottom="20dp"
     android:background="@drawable/rounded_background"
-    android:backgroundTint="#FAE2BB"
+    android:backgroundTint="#FBEEE5"
 
 
     android:padding="16dp">
 
-
-    <ImageView
-        android:id="@+id/foodImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="331dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/foodName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Title"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/foodImage"
-        app:layout_constraintTop_toTopOf="@id/foodImage" />
-
-    <TextView
-        android:id="@+id/foodDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Description"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/foodImage"
-        app:layout_constraintTop_toBottomOf="@id/tvPrice" />
 
     <!--Label Type-->
 
@@ -52,39 +18,79 @@
 
     <!--heart-->
 
+    <ImageView
+        android:id="@+id/foodImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/foodName"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:text="Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/foodDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text=" Description"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toBottomOf="@+id/foodName" />
+
     <TextView
         android:id="@+id/tvLabelType"
-        android:layout_width="42dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="96dp"
-        android:text="Type: "
+        android:layout_width="37dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="4dp"
+        android:text="   Type: "
+        android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7" />
 
     <TextView
         android:id="@+id/tvType"
         android:layout_width="40dp"
         android:layout_height="16dp"
-        android:layout_marginEnd="180dp"
-        android:text="Bread"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvLabelType"
-        app:layout_constraintTop_toBottomOf="@id/quantitySelector"
-        tools:layout_editor_absoluteY="181dp" />
+        android:layout_marginTop="4dp"
+        android:text="  Bread"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/quantitySelector"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toEndOf="@id/tvLabelType"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7" />
 
     <TextView
         android:id="@+id/tvPrice"
         android:layout_width="49dp"
         android:layout_height="23dp"
-        android:text="$"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/foodDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.035"
-        app:layout_constraintStart_toEndOf="@id/foodImage"
 
-        app:layout_constraintTop_toBottomOf="@id/foodName" />
+        android:layout_marginEnd="224dp"
+        android:text=" $"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
 
     <ImageView
         android:id="@+id/ivHeart"
@@ -96,58 +102,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/orange" />
     <!--quantity selector layout-->
+
     <LinearLayout
         android:id="@+id/quantitySelector"
-        android:layout_width="225dp"
-        android:layout_height="45dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#FAE2BB"
-        android:orientation="horizontal"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         android:padding="4dp"
-        app:layout_constraintStart_toStartOf="@id/foodDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice"
+        app:layout_constraintVertical_bias="1.0">
 
-        app:layout_constraintTop_toBottomOf="@id/foodDescription">
         <!--Minus Button-->
 
         <!--Quantity Text-->
 
-        <ImageButton
-            android:id="@+id/btnMinus"
-            android:layout_width="35dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FF5722"
-            android:scaleType="centerInside"
-
-            android:src="@drawable/minus" />
-
-        <EditText
-            android:id="@+id/etQuantity"
-            android:layout_width="34dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@color/white"
-            android:text="13"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
         <!--Add button-->
-        <ImageButton
-            android:id="@+id/btnAdd"
-            android:layout_width="33dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FF5722"
-            android:scaleType="centerInside"
-
-            android:src="@drawable/add" />
         <!--Add to cart button-->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/addToCartButton"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-
+            android:layout_height="33dp"
             android:backgroundTint="#FF5722"
             android:paddingHorizontal="16dp"
-            android:text="Add to Cart"
+            android:text="Add to Cafrt"
+            android:textSize="9sp"
+            android:textAlignment="center"
+            app:cornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="@id/quantitySelector"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/quantitySelector"
@@ -155,6 +140,57 @@
 
             />
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
+        android:layout_width="111dp"
+        android:layout_height="27dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/quantitySelector"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toBottomOf="@+id/foodDescription">
+
+        <ImageButton
+            android:id="@+id/btnMinus"
+            android:layout_width="33dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="#FF5722"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/minus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etQuantity"
+            android:layout_width="30dp"
+            android:layout_height="19dp"
+            android:background="@color/white"
+            android:text="13"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnAdd"
+            app:layout_constraintStart_toEndOf="@id/btnMinus"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnAdd"
+            android:layout_width="34dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="#FF5722"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
