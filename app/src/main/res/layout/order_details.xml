@@ -5,9 +5,7 @@
     android:id="@id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
-    android:background="#F2B5B5"
-    android:backgroundTint="#A46969">
+    android:layout_marginBottom="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/itemDetails"
@@ -82,9 +80,10 @@
         android:layout_width="412dp"
         android:layout_height="65dp"
         android:background="#BDA2A2"
+
         android:backgroundTint="#E6DBDB"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -95,6 +94,7 @@
             android:layout_marginStart="36dp"
             android:layout_marginTop="16dp"
             android:text="Date: "
+            android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

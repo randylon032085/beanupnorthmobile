@@ -20,23 +20,24 @@
                     android:layout_weight="1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/itemName"
-                    app:layout_constraintHorizontal_bias="0.185"
+                    app:layout_constraintHorizontal_bias="0.695"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/itemQuantity"
                     android:layout_width="120dp"
                     android:layout_height="34dp"
+                    android:layout_marginStart="152dp"
+
                     android:layout_weight="1"
                     android:text="item quantity"
-
                     android:textColor="#7DDA58"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@+id/iVproduct"
-                    app:layout_constraintTop_toBottomOf="@+id/itemName"
-                    tools:layout_editor_absoluteX="93dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/itemName" />
 
                 <TextView
                     android:id="@+id/itemPrice"
@@ -53,12 +54,12 @@
                     android:id="@+id/itemName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="100dp"
                     android:layout_weight="3"
                     android:text="item name"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/itemPrice"
-                    app:layout_constraintStart_toEndOf="@id/iVproduct"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -78,6 +79,7 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

@@ -171,8 +171,8 @@
                 android:id="@+id/addToCartButton"
 
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:backgroundTint="#725133"
+                android:layout_height="33dp"
+                android:backgroundTint="#7C5353"
                 android:paddingHorizontal="16dp"
                 android:text="Add to Cart"
                 android:textAlignment="center"
