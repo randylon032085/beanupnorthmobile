@@ -1,8 +1,10 @@
 package com.example.beanupnorth;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 
 import androidx.activity.EdgeToEdge;
@@ -21,7 +23,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.core.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,11 +45,12 @@ public class MyOrder extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
     }
-
-
-
-
+    public void ONCLICKRETURNHOME(View v){
+        startActivity(new Intent(MyOrder.this, HomeScreen.class));
+    }
     public void FetchOrder (){
         Log.d("Firebase Orders","Fetch ordered called");
         //getting current user

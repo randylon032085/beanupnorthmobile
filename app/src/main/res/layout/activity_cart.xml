@@ -7,30 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".Cart">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Proceed to Checkout"
-        android:onClick="CHECKOUT"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartRecyleView"
-        android:layout_width="349dp"
-        android:layout_height="512dp"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        android:layout_width="405dp"
+        android:layout_height="513dp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497" />
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="77dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/cartRecyleView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,34 +31,84 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EDD9b8">
+            android:background="@drawable/theme3">
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="104dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="52dp"
+                android:layout_width="116dp"
+                android:layout_height="52dp"
                 android:text="Cart"
-                android:textSize="20sp"
+
+                android:textAlignment="center"
+                android:textColor="#977575"
+                android:textSize="30sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/button2"
+                app:layout_constraintHorizontal_bias="0.132"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="88dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="36dp"
-                android:text="Back"
-                android:onClick="BACKBUTTONG"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.485" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@drawable/theme2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="88dp"
+            android:layout_height="42dp"
+            android:onClick="BACKBUTTONG"
+            android:text="Back"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="37dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="241dp"
+            android:layout_height="75dp"
+            android:layout_marginEnd="28dp"
+            android:background="#F6EFEF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.512">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="108dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_border"
+
+        android:onClick="CHECKOUT"
+        android:text="Checkout"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/tvNoItem"
+        android:layout_width="242dp"
+        android:layout_height="82dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.323" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

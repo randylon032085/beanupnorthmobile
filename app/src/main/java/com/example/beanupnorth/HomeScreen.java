@@ -43,6 +43,7 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
     DatabaseReference dbRef;
     ArrayList<CartItem> cartItems = new ArrayList<>();
 
+
     SearchView searchView;
 
     private final ActivityResultLauncher<Intent> cartLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result ->{
@@ -176,10 +177,19 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
     }
 
     public void openCart(View v){
-        Intent intent = new Intent(HomeScreen.this, Cart.class);
+            if(!(cartItems.size()<1)){
+                Intent intent = new Intent(HomeScreen.this, Cart.class);
 
-        intent.putExtra("cartItems", cartItems);
-        cartLauncher.launch(intent);
+                intent.putExtra("cartItems", cartItems);
+                cartLauncher.launch(intent);
+            }else{
+                Toast.makeText(this, "You have no item into your cart", Toast.LENGTH_SHORT).show();
+            }
+
+
+
+
+
     }
 
     @Override

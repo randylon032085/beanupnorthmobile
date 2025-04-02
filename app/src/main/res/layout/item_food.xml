@@ -21,7 +21,7 @@
         android:layout_width="354dp"
         android:layout_height="140dp"
         android:background="@drawable/rounded_border"
-        android:backgroundTint="#FFE0B0"
+        android:backgroundTint="#EFE8E8"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,11 +169,12 @@
             <!--Add to cart button-->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/addToCartButton"
+
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:backgroundTint="#725133"
                 android:paddingHorizontal="16dp"
-                android:text="Add to Cafrt"
+                android:text="Add to Cart"
                 android:textAlignment="center"
                 android:textSize="9sp"
                 app:cornerRadius="5dp"
@@ -183,6 +184,7 @@
                 app:layout_constraintTop_toTopOf="@id/quantitySelector"
 
                 />
+
         </LinearLayout>
 
         <TextView
@@ -212,6 +214,9 @@
             app:layout_constraintStart_toEndOf="@+id/tvLabelType"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
             app:layout_constraintVertical_bias="0.333" />
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--quantity selector layout-->
