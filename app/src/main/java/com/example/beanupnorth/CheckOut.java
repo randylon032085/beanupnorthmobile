@@ -128,6 +128,7 @@ public class CheckOut extends AppCompatActivity {
 
     }
     public void CHECKOUTBACK(View v){
+//        startActivity(new Intent(CheckOut.this, HomeScreen.class));
         finish();
     }
 

@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="36dp"
             android:backgroundTint="#7C5353"
-            android:text="View My Order"
+            android:text="View QR Code"
             app:cornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

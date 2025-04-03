@@ -18,7 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="139dp"
         android:background="@drawable/theme3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -101,7 +101,7 @@
     <LinearLayout
         android:id="@+id/filterButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="66dp"
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -113,10 +113,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#A46969"
-            android:textSize="13sp"
             android:onClick="cofeeButton"
             android:text="Coffee"
             android:textColor="@android:color/white"
+            android:textSize="13sp"
             app:cornerRadius="5dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -124,32 +124,32 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:backgroundTint="#A46969"
-            app:cornerRadius="5dp"
-            android:textSize="13sp"
             android:onClick="cakeButton"
             android:text="Cake"
-            android:textColor="@android:color/white" />
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:textColor="@android:color/white"
             android:textSize="13sp"
-            android:onClick="breadsButton"
-            app:cornerRadius="5dp"
-            android:backgroundTint="#A46969"
-            android:text="Breads"
-            android:textColor="@android:color/white" />
+            app:cornerRadius="5dp" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:backgroundTint="#A46969"
-            android:textSize="12sp"
+            android:onClick="breadsButton"
+            android:text="Breads"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            app:cornerRadius="5dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#A46969"
             android:onClick="packagesButton"
             android:text="Package"
             android:textColor="@android:color/white"
+            android:textSize="12sp"
             app:cornerRadius="5dp" />
     </LinearLayout>
 
@@ -176,7 +176,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="139dp"
+        android:layout_height="114dp"
         android:background="@drawable/theme2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">beanUpNorth</string>
     <string name="tview1Slogan">Bean UpNorth\nCoffee House</string>
+    <string name="listOfOrders">To view the QR code for a specific order, simply tap the \'View QR Code\'. button The unique QR code for the order will be displayed, allowing you to scan it for easy verification</string>
 </resources>
