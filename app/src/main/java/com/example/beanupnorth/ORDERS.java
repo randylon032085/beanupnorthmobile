@@ -14,11 +14,12 @@ public class ORDERS {
     private String customerId;
     private String date;
 
+    private long timestamp;
     public ORDERS(){
 
     }
 
-    public ORDERS(String orderId, List<OrderItem> item, Double subTotal, Double discount, Double tax, Double total, String status, String customerId, String date ){
+    public ORDERS(long timestamp ,String orderId, List<OrderItem> item, Double subTotal, Double discount, Double tax, Double total, String status, String customerId, String date ){
         this.orderId = orderId;
         this.subTotal = subTotal;
         this.discount = discount;
@@ -27,8 +28,10 @@ public class ORDERS {
         this.status = status;
         this.customerId = customerId;
         this.date = date;
+        this.timestamp = timestamp;
     }
 
+    public long getTimestamp(){return timestamp;}
     public String getOrderId() {
         return orderId;
     }
@@ -48,6 +51,7 @@ public class ORDERS {
     public Double getTax(){
         return  tax;
     }
+
 
     public Double getTotal(){
         return total;
@@ -78,6 +82,7 @@ public class ORDERS {
         this.subTotal = subTotal;
     }
 
+    public void setTimestamp(long timestamp){ this.timestamp = timestamp;}
     public void setDiscount(Double discount){
         this.discount = discount;
     }

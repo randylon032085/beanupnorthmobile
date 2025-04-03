@@ -1,7 +1,11 @@
 package com.example.beanupnorth;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +14,7 @@ import android.widget.ArrayAdapter;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -25,12 +30,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MyOrder extends AppCompatActivity {
 
     RecyclerView rvOrder;
     OrderItemAdapter orderItemAdapter;
+
+    private static final String CHANNEL_ID = "order_status_channel";// notification channel id
+    private Map<String,String> orderStatusMap = new HashMap<>();//to track status of each order
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +93,7 @@ public class MyOrder extends AppCompatActivity {
                     Double total = firstLevel.child("total").getValue(Double.class);
                     String date = firstLevel.child("date").getValue(String.class);
                     String status = firstLevel.child("status").getValue(String.class);
+                    Long timestamp = firstLevel.child("timestamp").getValue(Long.class);
 
                     Log.d("Firstlevel",""+customerId+orderId+total+date+status);
                     //checking customerid if matched with the user email.
@@ -102,9 +115,22 @@ public class MyOrder extends AppCompatActivity {
                         Orders.setTotal(total);
                         Orders.setDate(date);
                         Orders.setItem(orderItems);
+                        Orders.setTimestamp(timestamp);
 
+                        //check if timestamp is null
+                        if(timestamp==null){
+                            timestamp = 0L; // default value
+                        }
                         //adding orders to order
                         orders.add(Orders);
+
+                        //check if order status has change
+                        if(status!=null && !status.equals(orderStatusMap.get(orderId))){
+                            //send notification if the status has change
+                                sendStatusNotificastion(orderId,status);
+                                //update status in the map
+                            orderStatusMap.put(orderId,status);
+                        }
                     }
 
                 }
@@ -134,4 +160,36 @@ public class MyOrder extends AppCompatActivity {
 
     }
 
+    private void sendStatusNotificastion(String orderId, String status){
+        Log.d("Notification", "Sendig notification for order" +  orderId+"With Status: " +status);
+        //create notification manager
+        NotificationManager ntfManger = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        //Create notification channel for devices running android Oreo and above.
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "Order Status Channel";
+            String description = "Notification For Order Status Update";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            ntfManger.createNotificationChannel(channel);
+
+        }
+
+        String transform = transformId(orderId);
+        //Build the notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,CHANNEL_ID)
+                .setSmallIcon(R.drawable.coffe)
+                .setContentTitle("Order Status Updated")
+                .setContentText("Your order "+transform+" Status is now: "+status)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true)
+                ;
+
+        //send the notification channel
+        ntfManger.notify(0,builder.build());
+    }
+    public static String transformId(String input){
+        return input.length()>=6?input.substring(0,6):input;
+
+    };
 }

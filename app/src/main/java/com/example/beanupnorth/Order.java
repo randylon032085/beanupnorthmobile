@@ -1,6 +1,7 @@
 package com.example.beanupnorth;
 
 import java.util.List;
+import com.google.firebase.database.PropertyName;
 
 public class Order {
 
@@ -14,11 +15,12 @@ public class Order {
     private String customerId;
     private String date;
 
+    private long timestamp;
     public Order(){
 
     }
 
-    public Order(String orderId, List<CartItem> item, Double subTotal, Double discount, Double tax, Double total, String status, String customerId, String date ){
+    public Order(String orderId, List<CartItem> item, Double subTotal, Double discount, Double tax, Double total, String status, String customerId, String date, long timestamp){
         this.orderId = orderId;
         this.subTotal = subTotal;
         this.discount = discount;
@@ -27,8 +29,11 @@ public class Order {
         this.status = status;
         this.customerId = customerId;
         this.date = date;
+        this.timestamp = timestamp;
     }
 
+        @PropertyName("timestamp")//use the exact name expected by firebase
+    public long getTimestamp(){ return timestamp; }
     public String getOrderId() {
         return orderId;
     }
@@ -64,7 +69,8 @@ public class Order {
     public String getDate(){
         return date;
     }
-
+    @PropertyName("timestamp")
+    public void setTimestamp(long timestamp){this.timestamp=timestamp;}
     public void setOrderId(String orderId){
         this.orderId = orderId;
     }

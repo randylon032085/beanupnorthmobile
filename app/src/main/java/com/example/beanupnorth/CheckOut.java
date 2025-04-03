@@ -22,8 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class CheckOut extends AppCompatActivity {
 
@@ -101,7 +103,10 @@ public class CheckOut extends AppCompatActivity {
             order.setDiscount(Double.parseDouble(tVDiscount.getText().toString().substring(1)));
             order.setTax(Double.parseDouble(tVTax.getText().toString().substring(1)));
             order.setTotal(Double.parseDouble(tVtotal.getText().toString().substring(1)));
+            order.setTimestamp(System.currentTimeMillis());
             order.setStatus("pending");
+
+
 
             //push order to firebase
             orderRef.child(order.getOrderId()).setValue(order)
