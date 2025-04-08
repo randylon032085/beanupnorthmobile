@@ -57,12 +57,13 @@
             android:id="@+id/constraintLayout2"
             android:layout_width="170dp"
             android:layout_height="55dp"
-            android:layout_marginStart="32dp"
-            android:background="#FFFDFD"
+            android:layout_marginStart="36dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/rounded_border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.506">
+            app:layout_constraintVertical_bias="0.734">
 
             <TextView
                 android:id="@+id/textView3"
@@ -71,14 +72,15 @@
                 android:layout_marginStart="4dp"
                 android:text="Retrun to My Homescreen"
                 android:textSize="10sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.17" />
+                app:layout_constraintVertical_bias="0.121" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button5"
-                android:layout_width="76dp"
+                android:layout_width="85dp"
                 android:layout_height="32dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="#FF9800"
@@ -87,6 +89,7 @@
                 android:textColor="@color/white"
                 android:textSize="9sp"
                 app:cornerRadius="5dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -99,30 +102,32 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="170dp"
             android:layout_height="54dp"
-            android:background="#FFFDFD"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/rounded_border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.135"
+            app:layout_constraintHorizontal_bias="0.589"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.738">
 
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="4dp"
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="85dp"
+                android:layout_height="32dp"
                 android:backgroundTint="#FF9800"
                 android:text="Top Up"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="6sp"
+                android:textSize="9sp"
                 android:textStyle="bold"
+                app:cornerRadius="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
 
-                app:layout_constraintStart_toEndOf="@+id/tvMyWallet"
+                app:layout_constraintHorizontal_bias="0.811"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.75" />
+                app:layout_constraintVertical_bias="0.818" />
 
             <TextView
                 android:id="@+id/tvMyWallet"
@@ -130,6 +135,7 @@
                 android:layout_height="wrap_content"
                 android:text="My wallet: $1000"
                 android:textSize="10sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.073"

@@ -11,213 +11,226 @@
     >
 
 
-    <!--Label Type-->
-
-    <!--Price-->
-
-    <!--heart-->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="354dp"
-        android:layout_height="140dp"
-        android:background="@drawable/rounded_border"
-        android:backgroundTint="#EFE8E8"
-
+    <androidx.cardview.widget.CardView
+        android:layout_width="346dp"
+        android:layout_height="135dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="5dp"
+        app:cardElevation="7dp"
+        tools:ignore="MissingConstraints"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15">
-
-        <ImageView
-            android:id="@+id/foodImage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.22" />
-
-        <TextView
-            android:id="@+id/foodName"
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="116dp"
-            android:text="Title"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivHeart"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.157" />
-
-        <TextView
-            android:id="@+id/foodDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="44dp"
-            android:text=" Description"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/foodImage"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="49dp"
-            android:layout_height="23dp"
-
-            android:layout_marginTop="28dp"
-            android:text="   $"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.06"
-            app:layout_constraintStart_toEndOf="@+id/foodImage"
-            app:layout_constraintTop_toBottomOf="@+id/foodName" />
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout7"
-            android:layout_width="111dp"
-            android:layout_height="27dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_border"
+            android:backgroundTint="#FAF5F5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/quantitySelector"
-            app:layout_constraintHorizontal_bias="0.702"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPrice"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15">
 
-            <ImageButton
-                android:id="@+id/btnMinus"
-                android:layout_width="33dp"
-                android:layout_height="31dp"
-                android:layout_marginStart="16dp"
-                android:backgroundTint="#E40A0A"
+            <ImageView
+                android:id="@+id/foodImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.093"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.22" />
 
-                android:scaleType="centerInside"
-                android:src="@drawable/minus"
+            <TextView
+                android:id="@+id/foodName"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="116dp"
+                android:text="Title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ivHeart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.157" />
 
+            <TextView
+                android:id="@+id/foodDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="44dp"
+                android:text=" Description"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="49dp"
+                android:layout_height="23dp"
+
+                android:layout_marginTop="28dp"
+                android:text="   $"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toBottomOf="@+id/foodName" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout7"
+                android:layout_width="111dp"
+                android:layout_height="27dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/quantitySelector"
+                app:layout_constraintHorizontal_bias="0.702"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+                app:layout_constraintVertical_bias="0.0">
+
+                <ImageButton
+                    android:id="@+id/btnMinus"
+                    android:layout_width="33dp"
+                    android:layout_height="31dp"
+                    android:layout_marginStart="16dp"
+                    android:backgroundTint="#E40A0A"
+
+                    android:scaleType="centerInside"
+                    android:src="@drawable/minus"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/etQuantity"
+                    android:layout_width="30dp"
+                    android:layout_height="19dp"
+                    android:background="@color/white"
+                    android:text="13"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnAdd"
+                    app:layout_constraintStart_toEndOf="@id/btnMinus"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btnAdd"
+                    android:layout_width="34dp"
+                    android:layout_height="31dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#E40A0A"
+
+                    android:scaleType="centerInside"
+                    android:src="@drawable/add"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/ivHeart"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/heart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.169"
+                app:tint="@color/orange" />
+
+            <LinearLayout
+                android:id="@+id/quantitySelector"
+                android:layout_width="94dp"
+                android:layout_height="43dp"
+                android:orientation="vertical"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.938"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.814">
+
+                <!--Minus Button-->
+
+                <!--Quantity Text-->
+
+                <!--Add button-->
+                <!--Add to cart button-->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addToCartButton"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:backgroundTint="#7C5353"
+                    android:paddingHorizontal="16dp"
+                    android:text="Add to Cart"
+                    android:textAlignment="center"
+                    android:textSize="9sp"
+                    app:cornerRadius="5dp"
+                    app:layout_constraintBottom_toBottomOf="@id/quantitySelector"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/quantitySelector"
+                    app:layout_constraintTop_toTopOf="@id/quantitySelector"
+
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvLabelType"
+                android:layout_width="34dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="108dp"
+                android:layout_marginTop="4dp"
+                android:text="   Type: "
+                android:textSize="9sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
+                app:layout_constraintVertical_bias="0.333" />
 
-            <EditText
-                android:id="@+id/etQuantity"
-                android:layout_width="30dp"
-                android:layout_height="19dp"
-                android:background="@color/white"
-                android:text="13"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btnAdd"
-                app:layout_constraintStart_toEndOf="@id/btnMinus"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/btnAdd"
-                android:layout_width="34dp"
-                android:layout_height="31dp"
-                android:layout_marginEnd="4dp"
-                android:backgroundTint="#E40A0A"
-
-                android:scaleType="centerInside"
-                android:src="@drawable/add"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/ivHeart"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/heart"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.169"
-            app:tint="@color/orange" />
-
-        <LinearLayout
-            android:id="@+id/quantitySelector"
-            android:layout_width="94dp"
-            android:layout_height="43dp"
-            android:orientation="vertical"
-            android:padding="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.938"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.814">
-
-            <!--Minus Button-->
-
-            <!--Quantity Text-->
-
-            <!--Add button-->
-            <!--Add to cart button-->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/addToCartButton"
-
-                android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:backgroundTint="#7C5353"
-                android:paddingHorizontal="16dp"
-                android:text="Add to Cart"
-                android:textAlignment="center"
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="39dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="164dp"
+                android:text="  Bread"
                 android:textSize="9sp"
-                app:cornerRadius="5dp"
-                app:layout_constraintBottom_toBottomOf="@id/quantitySelector"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/quantitySelector"
-                app:layout_constraintTop_toTopOf="@id/quantitySelector"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tvLabelType"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
+                app:layout_constraintVertical_bias="0.333" />
 
-                />
 
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvLabelType"
-            android:layout_width="37dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="108dp"
-            android:layout_marginTop="4dp"
-            android:text="   Type: "
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
-            app:layout_constraintVertical_bias="0.333" />
-
-        <TextView
-            android:id="@+id/tvType"
-            android:layout_width="40dp"
-            android:layout_height="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="164dp"
-            android:text="  Bread"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/tvLabelType"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
-            app:layout_constraintVertical_bias="0.333" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
     <!--quantity selector layout-->
 
