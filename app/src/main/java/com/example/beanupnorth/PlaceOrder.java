@@ -13,6 +13,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -31,6 +33,7 @@ public class PlaceOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_place_order);
+
 
         imQrCode = findViewById(R.id.iVQrCode);
         QRCodeWriter writer = new QRCodeWriter();
@@ -72,5 +75,9 @@ public class PlaceOrder extends AppCompatActivity {
             startActivity(new Intent(PlaceOrder.this, HomeScreen.class));
         }
 
+    }
+
+    public void ONCLICKMAP(View v){
+        startActivity(new Intent(PlaceOrder.this, Maps.class));
     }
 }
