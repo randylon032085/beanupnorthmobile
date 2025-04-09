@@ -87,8 +87,12 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
         holder.clickViewHolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(),PlaceOrder.class);
-                intent.putExtra("myorder", order.getOrderId());
+//                Intent intent = new Intent(holder.itemView.getContext(),PlaceOrder.class);
+//                intent.putExtra("myorder", order.getOrderId());
+//                holder.itemView.getContext().startActivity(intent);
+
+                Intent intent = new Intent(holder.itemView.getContext(),Ratings.class);
+//                intent.putExtra("myorder", order.getOrderId());
                 holder.itemView.getContext().startActivity(intent);
             }
         });

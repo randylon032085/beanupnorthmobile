@@ -12,23 +12,23 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="346dp"
-        android:layout_height="135dp"
+        android:layout_width="380dp"
+        android:layout_height="136dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        app:cardCornerRadius="10dp"
         android:layout_margin="5dp"
+        app:cardCornerRadius="40dp"
         app:cardElevation="7dp"
-        tools:ignore="MissingConstraints"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/rounded_border"
+            android:background="@drawable/rounded_constraint"
             android:backgroundTint="#FAF5F5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -49,8 +49,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/userNameLayout"
-        android:layout_width="253dp"
-        android:layout_height="wrap_content"
+        android:layout_width="316dp"
+        android:layout_height="60dp"
         android:hint="Enter Username"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidthFocused="2dp"
@@ -77,14 +77,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordLayout"
-        android:layout_width="253dp"
-        android:layout_height="wrap_content"
+        android:layout_width="316dp"
+        android:layout_height="70dp"
         android:layout_marginTop="8dp"
         android:hint="Enter password"
-        app:endIconMode="password_toggle"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidthFocused="2dp"
         app:cursorColor="@color/black"
+        app:endIconMode="password_toggle"
         app:hintTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
 
@@ -98,7 +98,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="57dp"
             android:inputType="textPassword"
             android:paddingStart="48dp"
             android:paddingTop="12dp"

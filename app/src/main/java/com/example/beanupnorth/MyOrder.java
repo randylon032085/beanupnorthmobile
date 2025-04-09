@@ -127,6 +127,9 @@ public class MyOrder extends AppCompatActivity {
                         //check if order status has change
                         if(status!=null && !status.equals(orderStatusMap.get(orderId))){
                             //send notification if the status has change
+                            if(status.equals("complete")){
+
+                            }
                                 sendStatusNotificastion(orderId,status);
                                 //update status in the map
                             orderStatusMap.put(orderId,status);
