@@ -221,6 +221,8 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
 //        finish();
 //    }
 
-
+    public void ONCLICKMAP(View v){
+        startActivity(new Intent(HomeScreen.this, Maps.class));
+    }
 
 }

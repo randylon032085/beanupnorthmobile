@@ -65,6 +65,7 @@ public class Registration extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
            if(task.isSuccessful()){
                FirebaseUser user = mAuth.getCurrentUser();
+               startActivity(new Intent(Registration.this, Login.class));
                if(user!=null){
                     saveUserDatabase(user.getUid(), name, email, password);
                }else{
@@ -89,7 +90,12 @@ public class Registration extends AppCompatActivity {
 
 
     public void returnLogin(View v){
-        registerUser();
+
+            registerUser();
+
+    }
+
+    public void RETURNTOHOMESCREEN(View v){
         startActivity(new Intent(Registration.this, Login.class));
     }
 }

@@ -11,11 +11,10 @@
         android:id="@+id/cartRecyleView"
         android:layout_width="405dp"
         android:layout_height="513dp"
-        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout8"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -52,38 +51,106 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout8"
+        android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="119dp"
         android:background="@drawable/theme2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="88dp"
-            android:layout_height="42dp"
-            android:onClick="BACKBUTTONG"
-            android:text="Back"
-            tools:layout_editor_absoluteX="20dp"
-            tools:layout_editor_absoluteY="37dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="170dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="36dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/rounded_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.734">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Retrun to My Homescreen"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.121" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button2"
+                android:layout_width="85dp"
+                android:layout_height="32dp"
+                android:backgroundTint="#FF9800"
+                android:onClick="BACKBUTTONG"
+                android:text="Back"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                app:cornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.811"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.826" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="241dp"
-            android:layout_height="75dp"
-            android:layout_marginEnd="28dp"
-            android:background="#F6EFEF"
+            android:layout_width="170dp"
+            android:layout_height="54dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/rounded_border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.589"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.512">
+            app:layout_constraintVertical_bias="0.738">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="85dp"
+                android:layout_height="32dp"
+                android:backgroundTint="#FF9800"
+                android:text="Top Up"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                app:cornerRadius="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintHorizontal_bias="0.811"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.818" />
+
+            <TextView
+                android:id="@+id/tvMyWallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My wallet: $1000"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.073"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button3"
         android:layout_width="108dp"

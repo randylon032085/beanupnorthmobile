@@ -1,9 +1,11 @@
 package com.example.beanupnorth;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -57,5 +59,7 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(storeLocation, 15));
     }
 
-
+    public void ONCLICKORDERHERE(View v){
+            startActivity(new Intent(Maps.this, HomeScreen.class));
+    }
 }
