@@ -1,6 +1,9 @@
 package com.example.beanupnorth;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.RectF;
@@ -17,27 +20,53 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageLogo;
     TextView slogan;
-
+    private static final String CHANNEL_ID = "order_status_channel";// notification channel id
     Animation topanimation, bottomnanimation;
     private static final int REQUEST_NOTIFICATION_PERMISSION = 1;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+
+
+        DatabaseReference orderChange = FirebaseDatabase.getInstance().getReference("Ratings");
+        orderChange.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("Dylan", "changes");
+
+
+                sendStatusNotificastion("Hello", "RATINFSSSS");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         //Initialized firebase
         FirebaseApp.initializeApp(this);
@@ -99,6 +128,37 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    public void sendStatusNotificastion(String orderId, String status){
+//            Log.d("Notification", "Sendig notification for order" +  orderId+"With Status: " +status);
+        //create notification manager
+        NotificationManager ntfManger = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        //Create notification channel for devices running android Oreo and above.
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "Order Status Channel";
+            String description = "Notification For Order Status Update";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            ntfManger.createNotificationChannel(channel);
+
+        }
+
+
+
+
+        //Build the notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,CHANNEL_ID)
+                .setSmallIcon(R.drawable.coffe)
+                .setContentTitle("Order Status Updated")
+                .setContentText("Your order "+orderId + " Status is now: "+status)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true)
+                ;
+
+        //send the notification channel
+        ntfManger.notify(0,builder.build());
     }
 
     //Handle permission request result//

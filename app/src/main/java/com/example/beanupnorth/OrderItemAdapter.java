@@ -30,9 +30,13 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
     private List<ORDERS> orderItems;
     Context context;
 
+
+
+
     public OrderItemAdapter(List<ORDERS> orderItems, Context context){
         this.orderItems = orderItems;
         this.context = context;
+
 
     }
 
@@ -76,6 +80,7 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
         ORDERITEM_ADAPTER orderitemAdapter = new ORDERITEM_ADAPTER(order.getItem());
         holder.rv_orderItem.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext()));
         holder.rv_orderItem.setAdapter(orderitemAdapter);
+        holder.qrCode.setText(TemporaryVariables.qrCodeBtn);
 //    Glide.with(holder.itemView.getContext())
 //                    .load(item.getImgURl())
 //                            .apply(new RequestOptions().placeholder(R.drawable.coffeemug).error(R.drawable.add).centerCrop())
@@ -83,8 +88,9 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
 //    holder.txtItemName.setText(item.getName());
 //    holder.txtItemPrice.setText(String.format("$%.2f",item.getPrice()));
 
+
         //Setting lister to button
-        holder.clickViewHolder.setOnClickListener(new View.OnClickListener() {
+        holder.qrCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Intent intent = new Intent(holder.itemView.getContext(),PlaceOrder.class);
@@ -110,7 +116,7 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
         TextView txtItemName, txtItemPrice, txtDate, txtStatus, txtOrderId, txtTotal;
         RecyclerView rv_orderItem;
 
-        Button clickViewHolder;
+        Button qrCode;
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -122,9 +128,12 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
 //            txtOrderId = itemView.findViewById(R.id.txtOrderId);
             txtTotal = itemView.findViewById(R.id.txtTotal);
             rv_orderItem = itemView.findViewById(R.id.rv_OrderItem);
-            clickViewHolder = itemView.findViewById(R.id.button4);
+            qrCode = itemView.findViewById(R.id.button4);
         }
 
 
     }
+
+
+
 }

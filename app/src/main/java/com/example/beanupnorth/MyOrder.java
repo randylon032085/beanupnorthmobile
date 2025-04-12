@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -80,6 +81,7 @@ public class MyOrder extends AppCompatActivity {
         }
 
         DatabaseReference dr = FirebaseDatabase.getInstance().getReference("orders");
+
         dr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -125,12 +127,24 @@ public class MyOrder extends AppCompatActivity {
                         orders.add(Orders);
 
                         //check if order status has change
+                        //1.Pending
+                        //2.Preparing
+                        //3.Completed
+
                         if(status!=null && !status.equals(orderStatusMap.get(orderId))){
                             //send notification if the status has change
-                            if(status.equals("complete")){
-
-                            }
+                            if(status.equals("pending")){
                                 sendStatusNotificastion(orderId,status);
+                            }else if(status.equals("preparing"))
+                            {
+                                sendStatusNotificastion(orderId,status);
+                            }else if(status.equals("complete"))
+                            {
+                                sendStatusNotificastion(orderId,status);
+                                Toast.makeText(MyOrder.this, "Complete", Toast.LENGTH_SHORT).show();
+                                TemporaryVariables.qrCodeBtn="RATE US";
+                            }
+
                                 //update status in the map
                             orderStatusMap.put(orderId,status);
                         }
@@ -163,7 +177,7 @@ public class MyOrder extends AppCompatActivity {
 
     }
 
-    private void sendStatusNotificastion(String orderId, String status){
+    public void sendStatusNotificastion(String orderId, String status){
         Log.d("Notification", "Sendig notification for order" +  orderId+"With Status: " +status);
         //create notification manager
         NotificationManager ntfManger = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
@@ -195,4 +209,5 @@ public class MyOrder extends AppCompatActivity {
         return input.length()>=6?input.substring(0,6):input;
 
     };
+
 }
