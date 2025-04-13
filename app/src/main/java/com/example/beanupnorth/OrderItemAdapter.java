@@ -32,7 +32,6 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
 
 
 
-
     public OrderItemAdapter(List<ORDERS> orderItems, Context context){
         this.orderItems = orderItems;
         this.context = context;
@@ -74,13 +73,18 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
     holder.txtStatus.setText("Status: "+order.getStatus());
         Log.d("NUMBER OF ITEMS",""+orderItems.size());
 
+        if(order.getStatus().equals("complete")){
+            holder.qrCode.setText("RATE US");
+        }else{
+            holder.qrCode.setText("View QRcode");
+        }
 
         //Calling orderItemAdapter
 
         ORDERITEM_ADAPTER orderitemAdapter = new ORDERITEM_ADAPTER(order.getItem());
         holder.rv_orderItem.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext()));
         holder.rv_orderItem.setAdapter(orderitemAdapter);
-        holder.qrCode.setText(TemporaryVariables.qrCodeBtn);
+
 //    Glide.with(holder.itemView.getContext())
 //                    .load(item.getImgURl())
 //                            .apply(new RequestOptions().placeholder(R.drawable.coffeemug).error(R.drawable.add).centerCrop())
@@ -93,13 +97,21 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
         holder.qrCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(holder.qrCode.getText().toString().equals("RATE US")){
+
+                    Intent intent = new Intent(holder.itemView.getContext(),Ratings.class);
+//                intent.putExtra("myorder", order.getOrderId());
+                    holder.itemView.getContext().startActivity(intent);
+                }else{
+                    Intent intent = new Intent(holder.itemView.getContext(),PlaceOrder.class);
+                intent.putExtra("myorder", order.getOrderId());
+                holder.itemView.getContext().startActivity(intent);
+                }
 //                Intent intent = new Intent(holder.itemView.getContext(),PlaceOrder.class);
 //                intent.putExtra("myorder", order.getOrderId());
 //                holder.itemView.getContext().startActivity(intent);
 
-                Intent intent = new Intent(holder.itemView.getContext(),Ratings.class);
-//                intent.putExtra("myorder", order.getOrderId());
-                holder.itemView.getContext().startActivity(intent);
+
             }
         });
     }

@@ -225,4 +225,7 @@ public class HomeScreen extends AppCompatActivity implements FoodAdapter.onAddto
         startActivity(new Intent(HomeScreen.this, Maps.class));
     }
 
+    public void GOINGTORATINGS(View v){
+        startActivity(new Intent(HomeScreen.this, RatingsActivity.class));
+    }
 }
