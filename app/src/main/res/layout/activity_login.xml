@@ -36,17 +36,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tvForgotPw"
         app:layout_constraintVertical_bias="0.262" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="206dp"
-        android:layout_height="211dp"
-        android:src="@drawable/beanlogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.205" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/userNameLayout"
         android:layout_width="316dp"
@@ -59,8 +48,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.034"
         app:startIconDrawable="@drawable/user"
         app:startIconTint="@null">
 
